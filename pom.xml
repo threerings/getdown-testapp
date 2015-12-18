@@ -21,6 +21,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mainClass>com.threerings.testapp.TestApp</mainClass>
+    <getdown.version>1.6-SNAPSHOT</getdown.version>
   </properties>
 
   <developers>
@@ -72,6 +73,32 @@
                   <directory>src/main/getdown</directory>
                 </resource>
               </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- copy getdown.jar into target/testapp -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.threerings</groupId>
+                  <artifactId>getdown</artifactId>
+                  <version>${getdown.version}</version>
+                  <outputDirectory>${project.build.directory}/testapp</outputDirectory>
+                  <destFileName>getdown-new.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
             </configuration>
           </execution>
         </executions>
