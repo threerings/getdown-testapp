@@ -1,0 +1,9 @@
+appbase = http://samskivert.com/code/testapp
+
+code = testapp.jar
+
+class = com.threerings.testapp.TestApp
+
+ui.name = Getdown Test App
+ui.background = 3399AA
+ui.progress_text = FFFFFF

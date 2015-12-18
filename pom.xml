@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.threerings.testapp</groupId>
+  <artifactId>testapp</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>Getdown Test App</name>
+  <description>For great testing!</description>
+
+  <licenses>
+    <license>
+      <name>The (New) BSD License</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <mainClass>com.threerings.testapp.TestApp</mainClass>
+  </properties>
+
+  <developers>
+    <developer>
+      <id>samskivert</id>
+      <name>Michael Bayne</name>
+      <email>mdb@samskivert.com</email>
+    </developer>
+  </developers>
+
+  <dependencies>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <fork>true</fork>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+          <compilerArgs>
+            <arg>-Xlint</arg>
+            <arg>-Xlint:-serial</arg>
+            <arg>-Xlint:-path</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <!-- copy src/main/getdown/** into target/testapp -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/testapp</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/getdown</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <!-- change our jar from testapp-VERSION.jar to just testapp.jar -->
+          <finalName>${project.artifactId}</finalName>
+          <!-- put testapp.jar in target/testapp instead of target -->
+          <outputDirectory>${project.build.directory}/testapp</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <!-- generate a digest.txt in target/testapp -->
+      <plugin>
+        <groupId>org.bitbucket.joxley</groupId>
+        <artifactId>getdown-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <configuration>
+          <appdir>${project.build.directory}/testapp</appdir>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>digest</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>run</id>
+      <build>
+        <plugins>
+          <!-- allows running test app: mvn test -Prun -->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+              <execution>
+                <phase>test</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <mainClass>${mainClass}</mainClass>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
