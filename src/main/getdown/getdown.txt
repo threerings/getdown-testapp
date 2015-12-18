@@ -15,5 +15,9 @@ apparg = %APPDIR%
 resource = getdown-new.jar
 
 ui.name = Getdown Test App
-ui.background = 3399AA
+ui.background_image = background.png
+ui.progress = 17, 321, 458, 22
+ui.progress_bar = 336600
 ui.progress_text = FFFFFF
+ui.status = 57, 245, 373, 68
+ui.status_text = 000000
