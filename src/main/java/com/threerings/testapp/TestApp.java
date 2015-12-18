@@ -1,5 +1,7 @@
 package com.threerings.testapp;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,9 +10,24 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import com.threerings.getdown.util.LaunchUtil;
+
 public class TestApp extends Application {
 
     public static void main (String[] args) {
+        // if we have our appdir, launch a background thread that checks whether to upgrade getdown
+        if (args.length > 0) {
+            final File appdir = new File(args[0]);
+            new Thread() {
+                @Override public void run () {
+                    LaunchUtil.upgradeGetdown(new File(appdir, "getdown-old.jar"),
+                                              new File(appdir, "getdown.jar"),
+                                              new File(appdir, "getdown-new.jar"));
+                }
+            }.start();
+        }
+
+        // launch the main JavaFX app
         launch(args);
     }
 

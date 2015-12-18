@@ -1,8 +1,18 @@
+# where our app is hosted on the internets
 appbase = http://samskivert.com/code/testapp
 
-code = testapp.jar
+# the jar file that contains our code
+code = testapp-jar-with-dependencies.jar
 
+# the main entry point of our app
 class = com.threerings.testapp.TestApp
+
+# we pass the appdir to our app so that it can upgrade getdown
+apparg = %APPDIR%
+
+# we include the latest copy of getdown as a resource, and our app checks at startup whether it
+# should upgrade getdown based on the new jar
+resource = getdown-new.jar
 
 ui.name = Getdown Test App
 ui.background = 3399AA
