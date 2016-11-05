@@ -140,17 +140,22 @@
 
       <!-- generate a digest.txt in target/testapp -->
       <plugin>
-        <groupId>org.bitbucket.joxley</groupId>
-        <artifactId>getdown-maven-plugin</artifactId>
-        <version>1.0.0</version>
-        <configuration>
-          <appdir>${project.build.directory}/testapp</appdir>
-        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.8</version>
         <executions>
           <execution>
+            <id>digest</id>
             <phase>package</phase>
+            <configuration>
+              <target>
+                <taskdef name="digest" classname="com.threerings.getdown.tools.DigesterTask"
+                         classpath="maven.plugin.classpath"/>
+                <digest appdir="${project.build.directory}/testapp"/>
+              </target>
+            </configuration>
             <goals>
-              <goal>digest</goal>
+              <goal>run</goal>
             </goals>
           </execution>
         </executions>
