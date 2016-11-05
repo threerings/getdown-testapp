@@ -154,6 +154,13 @@
             </goals>
           </execution>
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>getdown</artifactId>
+            <version>${getdown.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
