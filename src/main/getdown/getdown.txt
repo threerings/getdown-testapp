@@ -14,6 +14,8 @@ apparg = %APPDIR%
 # should upgrade getdown based on the new jar
 resource = getdown-new.jar
 
+resource = funny%test dir/some=file.txt
+
 ui.name = Getdown Test App
 ui.background_image = background.png
 ui.progress = 17, 321, 458, 22
