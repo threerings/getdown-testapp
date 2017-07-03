@@ -10,11 +10,16 @@ class = com.threerings.testapp.TestApp
 # we pass the appdir to our app so that it can upgrade getdown
 apparg = %APPDIR%
 
+# test the %env% mechanism
+jvmarg = -Dusername=\%ENV.USER%
+
 # we include the latest copy of getdown as a resource, and our app checks at startup whether it
 # should upgrade getdown based on the new jar
 resource = getdown-new.jar
 
+strict_comments = true
 resource = funny%test dir/some=file.txt
+resource = crazyhashfile#txt
 
 ui.name = Getdown Test App
 ui.background_image = background.png

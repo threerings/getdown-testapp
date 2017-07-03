@@ -21,7 +21,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mainClass>com.threerings.testapp.TestApp</mainClass>
-    <getdown.version>1.6-SNAPSHOT</getdown.version>
+    <getdown.version>1.7-SNAPSHOT</getdown.version>
   </properties>
 
   <developers>
