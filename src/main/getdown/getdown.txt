@@ -30,3 +30,9 @@ ui.progress_bar = 336600
 ui.progress_text = FFFFFF
 ui.status = 57, 245, 373, 68
 ui.status_text = 000000
+
+# java_min_version = 1080112
+# java_exact_version_required = true
+# java_location = [windows] java_windows.jar
+# java_location = [mac os x] java_macos.jar
+# java_location = [linux] java_linux.jar
