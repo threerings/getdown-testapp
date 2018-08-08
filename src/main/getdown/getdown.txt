@@ -20,6 +20,8 @@ resource = getdown-new.jar
 strict_comments = true
 resource = funny%test dir/some=file.txt
 resource = crazyhashfile#txt
+uresource = foo.jar
+xresource = script.sh
 
 ui.name = Getdown Test App
 ui.background_image = background.png
