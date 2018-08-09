@@ -2,7 +2,10 @@
 appbase = http://samskivert.com/code/testapp
 
 # the jar file that contains our code
-code = testapp-jar-with-dependencies.jar
+code = testapp.jar
+
+# include the latest copy of getdown; app checks at startup whether it should upgrade getdown
+code = getdown-new.jar
 
 # the main entry point of our app
 class = com.threerings.testapp.TestApp
@@ -12,10 +15,6 @@ apparg = %APPDIR%
 
 # test the %env% mechanism
 jvmarg = -Dusername=\%ENV.USER%
-
-# we include the latest copy of getdown as a resource, and our app checks at startup whether it
-# should upgrade getdown based on the new jar
-resource = getdown-new.jar
 
 strict_comments = true
 resource = funny%test dir/some=file.txt

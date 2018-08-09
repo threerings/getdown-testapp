@@ -41,6 +41,8 @@
   </dependencies>
 
   <build>
+    <finalName>testapp</finalName>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -57,6 +59,16 @@
             <arg>-Xlint:-serial</arg>
             <arg>-Xlint:-path</arg>
           </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <!-- put our jar file into target/testapp -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <outputDirectory>${project.build.directory}/testapp</outputDirectory>
         </configuration>
       </plugin>
 
@@ -105,35 +117,6 @@
                 </artifactItem>
               </artifactItems>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- builds a standalone jar file during 'mvn package' -->
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <mainClass>${mainClass}</mainClass>
-            </manifest>
-          </archive>
-          <!-- change our jar from testapp-VERSION.jar to just testapp.jar -->
-          <finalName>${project.artifactId}</finalName>
-          <!-- put testapp.jar in target/testapp instead of target -->
-          <outputDirectory>${project.build.directory}/testapp</outputDirectory>
-        </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
