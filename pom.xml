@@ -21,7 +21,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mainClass>com.threerings.testapp.TestApp</mainClass>
-    <getdown.version>1.7.2-SNAPSHOT</getdown.version>
+    <getdown.version>1.8-SNAPSHOT</getdown.version>
   </properties>
 
   <developers>
@@ -34,8 +34,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.threerings</groupId>
-      <artifactId>getdown</artifactId>
+      <groupId>com.threerings.getdown</groupId>
+      <artifactId>getdown-launcher</artifactId>
       <version>${getdown.version}</version>
     </dependency>
   </dependencies>
@@ -109,8 +109,8 @@
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>com.threerings</groupId>
-                  <artifactId>getdown</artifactId>
+                  <groupId>com.threerings.getdown</groupId>
+                  <artifactId>getdown-launcher</artifactId>
                   <version>${getdown.version}</version>
                   <outputDirectory>${project.build.directory}/testapp</outputDirectory>
                   <destFileName>getdown-new.jar</destFileName>
@@ -144,8 +144,8 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.threerings</groupId>
-            <artifactId>getdown</artifactId>
+            <groupId>com.threerings.getdown</groupId>
+            <artifactId>getdown-ant</artifactId>
             <version>${getdown.version}</version>
           </dependency>
         </dependencies>
