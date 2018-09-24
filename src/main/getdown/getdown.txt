@@ -1,5 +1,5 @@
 # where our app is hosted on the internets
-appbase = http://samskivert.com/code/testapp
+appbase = https://samskivert.com/code/testapp
 
 # the jar file that contains our code
 code = testapp.jar
